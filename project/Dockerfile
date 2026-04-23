@@ -52,8 +52,9 @@ RUN chmod +x /usr/local/bin/start \
     && mkdir -p storage/framework/views \
     && mkdir -p storage/framework/sessions \
     && mkdir -p storage/logs \
-    && chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R ug+rwx storage bootstrap/cache
+    && mkdir -p bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache database \
+    && chmod -R 775 storage bootstrap/cache database
 
 EXPOSE 80
 
