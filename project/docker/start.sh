@@ -14,11 +14,12 @@ chown -R www-data:www-data storage bootstrap/cache database
 chmod -R 775 storage bootstrap/cache database
 chmod 664 database/database.sqlite
 
-php artisan optimize:clear
 php artisan storage:link >/dev/null 2>&1 || true
 
 if [ "${RUN_MIGRATIONS:-false}" = "true" ]; then
   php artisan migrate --force
 fi
+
+php artisan optimize:clear || true
 
 exec apache2-foreground
