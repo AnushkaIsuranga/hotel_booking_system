@@ -48,6 +48,10 @@ COPY --from=frontend /app/public/build ./public/build
 COPY docker/start.sh /usr/local/bin/start
 
 RUN chmod +x /usr/local/bin/start \
+    && mkdir -p storage/framework/cache \
+    && mkdir -p storage/framework/views \
+    && mkdir -p storage/framework/sessions \
+    && mkdir -p storage/logs \
     && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R ug+rwx storage bootstrap/cache
 
