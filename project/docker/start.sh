@@ -20,6 +20,4 @@ if [ "${RUN_MIGRATIONS:-false}" = "true" ]; then
   php artisan migrate --force
 fi
 
-php artisan optimize:clear || true
-
 exec apache2-foreground
