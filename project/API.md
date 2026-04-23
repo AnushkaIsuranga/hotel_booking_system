@@ -36,3 +36,14 @@ Set these in Render environment variables:
 ### Render Persistent Disk (sqlite)
 
 `render.yaml` defines a persistent disk mounted at `/var/data` so sqlite data survives container restarts.
+
+## Default Admin Migration
+
+A database migration now upserts a default admin user for development and demo environments.
+
+- Email: `admin@123.com`
+- Password: `Admin@123`
+
+Migration file:
+
+- `database/migrations/2026_04_23_120000_set_default_admin_credentials.php`
